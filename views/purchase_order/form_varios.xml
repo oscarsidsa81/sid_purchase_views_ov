@@ -1,48 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <record id="view_purchase_order_form_varios" model="ir.ui.view">
-      <field name="name">OV - Varios (purchase.order.form)</field>
+
+    <!-- purchase.order.form: SOLO campos propios (sid_purchase_extra_fields) -->
+    <record id="view_purchase_order_form_custom_fields" model="ir.ui.view">
+      <field name="name">OV - purchase.order.form (custom fields)</field>
       <field name="model">purchase.order</field>
       <field name="inherit_id" ref="purchase.purchase_order_form"/>
       <field name="priority">1600</field>
       <field name="arch" type="xml">
-        <xpath expr="//page[@name='products']/field[@name='order_line']/tree/field[@name='item']" position="move"/>
 
-        <xpath expr="//field[@name='price_unit']" position="attributes">
-          <attribute name="digits">[12,2]</attribute>
-        </xpath>
-        <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="attributes">
-          <attribute name="digits">[12,2]</attribute>
+        <!-- Campo propio -->
+        <xpath expr="//field[@name='picking_type_id']" position="after">
+          <field name="sid_regularizado"/>
         </xpath>
 
-        <xpath expr="//field[@name='order_line']/form//field[@name='activity_ids']" position="attributes">
-          <attribute name="style">width: 720px</attribute>
-        </xpath>
-
+        <!-- Botón estadístico que muestra un campo propio (si ya lo tenéis en vuestra UI) -->
         <xpath expr="//div[@name='button_box']/button[@name='action_view_picking']" position="after">
           <button class="oe_stat_button" icon="fa-sitemap" type="action" name="1265">
-            <field widget="statinfo" name="x_order_id_purchase_order_line_count" string="Líneas de pedido"/>
+            <field widget="statinfo" name="sid_order_id_purchase_order_line_count" string="Líneas de pedido"/>
           </button>
-        </xpath>
-
-        <xpath expr="//field[@name='partner_id']" position="attributes">
-          <attribute name="domain">[('is_company', '=', True)]</attribute>
-        </xpath>
-
-        <xpath expr="//field[@name='picking_type_id']" position="after">
-          <field name="x_regularizado"/>
-        </xpath>
-
-        <xpath expr="//field[@name='order_line']/tree" position="attributes">
-          <attribute name="limit">150</attribute>
-        </xpath>
-
-        <xpath expr="//page[@name='products']/field[@name='order_line']/form/group/group/field[@name='product_id']" position="attributes">
-          <attribute name="attrs">{'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))], 'required': [('display_type', '=', False)]}</attribute>
         </xpath>
 
       </field>
     </record>
+
   </data>
 </odoo>

@@ -1,45 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <record id="view_purchase_order_line_search_varios" model="ir.ui.view">
-      <field name="name">OV - Varios (purchase.order.line.search)</field>
+
+    <!-- purchase.order.line.search: SOLO campos sid_purchase_extra_fields -->
+    <record id="view_purchase_order_line_search_sid" model="ir.ui.view">
+      <field name="name">OV - purchase.order.line.search (sid fields)</field>
       <field name="model">purchase.order.line</field>
       <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
       <field name="priority">16000</field>
       <field name="arch" type="xml">
 
-        <xpath expr="//field[@name='order_id']" position="after">
-          <field name="item_ref_only" string="Item Venta"/>
-          <field name="item_edit" string="Item Stock"/>
-          <field name="name" string="Descripción"/>
-          <field name="name" string="Nombre búsqueda 1"/>
-          <field name="name" string="Nombre búsqueda 2"/>
-          <field name="po_comments"/>
-          <field name="sale_line_id" string="Presupuesto de venta"/>
-        </xpath>
-
         <xpath expr="//filter[@name='hide_cancelled']" position="after">
-          <filter name="studio_filter_H8lUN" string="Compras de stock" domain="[&quot;&amp;&quot;,[&quot;order_id.origin&quot;,&quot;ilike&quot;,&quot;Stock&quot;],[&quot;display_type&quot;,&quot;=&quot;,False]]"/>
-          <filter name="retraso" string="Con retraso" domain="[('x_retraso', 'ilike', 'del')]"/>
-          <filter name="proyectos" string="Proyectos" domain="[('account_analytic_id', '!=', False)]"/>
-          <filter name="nacional" string="Nacional" domain="[('account_analytic_id', '=', False)]"/>
-        </xpath>
-
-        <xpath expr="//filter[@name='studio_filter_H8lUN']" position="after">
-          <filter name="invoice_status" string="Facturado" domain="[('order_id.invoice_status','=','invoiced')]"/>
+          <filter name="sid_pending" string="Pendiente" domain="[('pending_line','=','true')]"/>
+          <filter name="sid_invoice_facturar" string="Para facturar" domain="[('sid_invoice','=','facturar')]"/>
+          <filter name="sid_invoice_pendiente" string="Pendiente facturación" domain="[('sid_invoice','=','pendiente')]"/>
         </xpath>
 
         <search>
           <searchpanel>
-            <field name="x_invoice" enable_counters="1" select="multi"/>
-            <field name="x_pendiente" string="Pendiente entrega" enable_counters="1" select="multi"/>
-            <field name="state" enable_counters="1" select="multi"/>
+            <field name="sid_invoice" enable_counters="1" select="multi"/>
+            <field name="pending_line" string="Pendiente" enable_counters="1" select="multi"/>
             <field name="sid_po_line_delay" enable_counters="1" select="multi" default_order="id asc"/>
-            <field name="x_pais" enable_counters="1" select="multi"/>
+            <field name="supplier_country" string="País Origen" enable_counters="1" select="multi"/>
           </searchpanel>
         </search>
 
       </field>
     </record>
+
   </data>
 </odoo>

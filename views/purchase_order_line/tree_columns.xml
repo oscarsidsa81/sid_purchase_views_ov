@@ -1,84 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <data>
-    <record id="view_purchase_order_line_tree_columns" model="ir.ui.view">
-      <field name="name">OV - purchase.order.line.tree columnas</field>
+
+    <!--
+      purchase.order.line.tree: SOLO CAMPOS del módulo sid_purchase_extra_fields
+      (evitamos x_* y campos "legacy" sustituidos por sid_* / nuevos campos).
+    -->
+    <record id="view_purchase_order_line_tree_columns_sid" model="ir.ui.view">
+      <field name="name">OV - purchase.order.line.tree (sid fields)</field>
       <field name="model">purchase.order.line</field>
       <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
       <field name="priority">16000</field>
       <field name="arch" type="xml">
 
+        <!-- Antes de la descripción -->
         <xpath expr="//field[@name='name']" position="before">
-          <field name="x_hs_code_po_line" optional="show"/>
-          <field name="item" optional="show"/>
-          <field name="item_edit" optional="hide"/>
-          <field name="x_pendiente" optional="hide"/>
+          <field name="sid_hs_code_po_line" optional="show"/>
+          <field name="supplier_country" optional="show"/>
+          <field name="pending_line" optional="show"/>
+          <field name="sid_invoice" optional="show"/>
+          <field name="sid_po_line_delay" optional="show"/>
         </xpath>
 
-        <xpath expr="//field[@name='order_id']" position="after">
-          <field name="sale_order_id" optional="show" attrs="{'readonly': [('sale_line_id','!=',False), ('product_id','=',False)]}"/>
-        </xpath>
-
-        <xpath expr="//field[@name='order_id']" position="before">
-          <field name="x_retraso" widget="badge" optional="show"/>
-        </xpath>
-
+        <!-- Fecha venta (propia) junto a contractual -->
         <xpath expr="//field[@name='contract_date']" position="after">
-          <field name="x_sale_date" optional="show" widget="date" attrs="{'readonly': [('sale_line_id','!=',False)]}"/>
-          <field name="sale_line_id" optional="hide"/>
+          <field name="sid_sale_date" optional="show" widget="date"/>
         </xpath>
 
+        <!-- Facturación desde venta (propio) -->
         <xpath expr="//field[@name='product_qty']" position="after">
-          <field name="qty_received" optional="show"/>
-          <field name="qty_invoiced" optional="show"/>
-          <field name="qty_to_invoice" optional="show"/>
-          <field name="x_qty_inv_sale" optional="show"/>
-          <field name="po_comments" optional="show"/>
+          <field name="sid_qty_inv_sale" optional="show"/>
         </xpath>
 
+        <!-- Peso / diferencias (propios) -->
         <xpath expr="//field[@name='price_subtotal']" position="after">
-          <field name="x_unit_price_difference" optional="hide"/>
-          <field name="x_unit_weight_po_line" optional="show"/>
-          <field name="x_weight_subtotal" optional="show"/>
+          <field name="sid_unit_price_difference" optional="hide"/>
+          <field name="sid_unit_weight_po_line" optional="show"/>
+          <field name="sid_weight_subtotal" optional="show"/>
         </xpath>
 
-        <xpath expr="//tree[1]/field[@name='contract_date']" position="attributes">
-          <attribute name="optional">show</attribute>
-          <attribute name="string">Fecha Contractual Item</attribute>
-        </xpath>
-
-        <xpath expr="//tree[1]/field[@name='estimated_date']" position="attributes">
-          <attribute name="optional">show</attribute>
-        </xpath>
-
-        <xpath expr="//tree[1]" position="attributes">
-          <attribute name="multi_edit">true</attribute>
-        </xpath>
-
-        <xpath expr="//tree[1]/field[@name='order_id']" position="attributes">
-          <attribute name="readonly">1</attribute>
-        </xpath>
-
-        <xpath expr="//tree[1]/field[@name='qty_received']" position="attributes">
-          <attribute name="readonly">1</attribute>
-        </xpath>
-
-        <xpath expr="//tree[1]/field[@name='product_uom']" position="attributes">
-          <attribute name="readonly">1</attribute>
-        </xpath>
-
-      </field>
-    </record>
-
-    <record id="view_purchase_order_line_tree_digits_price_unit" model="ir.ui.view">
-      <field name="name">OV - decimales precio unitarios</field>
-      <field name="model">purchase.order.line</field>
-      <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
-      <field name="priority">2000</field>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='price_unit']" position="attributes">
-          <attribute name="digits">[12,2]</attribute>
-        </xpath>
       </field>
     </record>
 

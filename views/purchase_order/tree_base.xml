@@ -8,11 +8,8 @@
       <field name="priority">16</field>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='origin']" position="after">
-          <field name="x_pendiente" optional="show"/>
-          <field name="x_total" optional="show"/>
-        </xpath>
-        <xpath expr="//field[@name='amount_untaxed']" position="attributes">
-          <attribute name="optional">show</attribute>
+          <field name="amount_untaxed_pending" optional="show"/>
+          <field name="amount_untaxed_total" optional="show"/>
         </xpath>
       </field>
     </record>
