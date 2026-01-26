@@ -12,15 +12,14 @@
                     <attribute name="groups">sales_team.group_sale_salesman,purchase.group_purchase_manager</attribute>
                 </xpath>
                 <xpath expr="//div[@name='button_box']/button[@name='action_view_picking']" position="after">
-                    <button class="oe_stat_button" icon="fa-sitemap" type="action" name="1265">
-                        <div class="o_stat_info">
-                            <span class="o_stat_value">
-                                <field name="sid_order_id_purchase_order_line_count" widget="statinfo"/>
-                            </span>
-                            <span class="o_stat_text">Líneas</span>
-                        </div>
+                    <button class="oe_stat_button"
+                            icon="fa-sitemap"
+                            type="action"
+                            name="%(sid_purchase_views_ov.action_purchase_order_lines_from_po)d">
+                        <field name="sid_order_id_purchase_order_line_count" widget="statinfo" string="Líneas"/>
                     </button>
                 </xpath>
+
             </field>
         </record>
     </data>
