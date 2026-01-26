@@ -19,7 +19,6 @@
                         <field name="sid_order_id_purchase_order_line_count" widget="statinfo" string="Líneas"/>
                     </button>
                 </xpath>
-
             </field>
         </record>
     </data>
