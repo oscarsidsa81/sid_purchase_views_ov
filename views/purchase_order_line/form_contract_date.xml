@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_purchase_order_line_form_contract_date" model="ir.ui.view">
+      <field name="name">OV - Contract Date</field>
+      <field name="model">purchase.order.line</field>
+      <field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
+      <field name="priority">16</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='contract_date']" position="attributes">
+          <attribute name="attrs"/>
+        </xpath>
+        <xpath expr="//field[@name='product_id']" position="after">
+          <field name="po_comments" readonly="0"/>
+        </xpath>
+        <xpath expr="//field[@name='order_id']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

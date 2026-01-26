@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="view_purchase_order_line_tree_colores" model="ir.ui.view">
+      <field name="name">OV - Colores</field>
+      <field name="model">purchase.order.line</field>
+      <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+      <field name="priority">16001</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='order_id']" position="before">
+          <field name="sequence" optional="show" widget="handle"/>
+        </xpath>
+        <xpath expr="//field[@name='name']" position="before">
+          <field name="state" optional="hide"/>
+        </xpath>
+        <xpath expr="//tree[1]" position="attributes">
+          <attribute name="multi_edit">true</attribute>
+          <attribute name="decoration-danger">contract_date  &lt;= (datetime.datetime.now() + datetime.timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S') and not contract_date  &lt; datetime.datetime.now() and product_qty &gt; qty_received and state == 'purchase'</attribute>
+          <attribute name="limit">150</attribute>
+        </xpath>
+        <xpath expr="//field[@name='order_id']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+        <xpath expr="//field[@name='qty_received']" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_purchase_order_line_tree_delay_decoration" model="ir.ui.view">
+      <field name="name">OV - delay decoration</field>
+      <field name="model">purchase.order.line</field>
+      <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+      <field name="priority">160010</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='sale_order_id']" position="after">
+          <field name="sid_po_line_delay" optional="show"/>
+        </xpath>
+        <xpath expr="//field[@name='sid_po_line_delay']" position="attributes">
+          <attribute name="decoration-bf">sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')</attribute>
+        </xpath>
+        <xpath expr="//field[@name='contract_date']" position="attributes">
+          <attribute name="decoration-bf">sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')</attribute>
+        </xpath>
+        <xpath expr="//tree" position="attributes">
+          <attribute name="decoration-muted">sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')</attribute>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

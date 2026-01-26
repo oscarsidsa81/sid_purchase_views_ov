@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_purchase_order_form_docs_domain" model="ir.ui.view">
+      <field name="name">OV - purchase.order.form (domain + documentos)</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="priority">16</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_id']" position="attributes">
+          <attribute name="domain">[('is_company', '=', True)]</attribute>
+        </xpath>
+        <xpath expr="//button[@name='action_view_invoice']" position="after">
+          <button class="oe_stat_button" icon="fa-file-o" type="action" name="1024" string="Documentos de compra"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

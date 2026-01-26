@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="view_purchase_order_line_tree_revisa_facturacion" model="ir.ui.view">
+      <field name="name">OV - Revisa Facturación</field>
+      <field name="model">purchase.order.line</field>
+      <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+      <field name="priority">16</field>
+      <field name="arch" type="xml">
+        <xpath expr="//tree" position="inside">
+          <header>
+            <button name="1327" confirm="¿Estás seguro de que deseas ejecutar esta acción?" type="action" string="Revisa Facturación" class="oe_button oe_form_button oe_highlight" groups="sales_team.group_sale_manager,purchase.group_purchase_manager,base.group_system"/>
+          </header>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>
