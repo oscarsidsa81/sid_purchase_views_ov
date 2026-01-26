@@ -1,47 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+  <data>
 
-        <!--
-          Decoraciones: colores de fila en función de sid_po_line_delay.
-          - warning: 1 semana
-          - danger: >=2 semanas
-        -->
-        <record id="view_purchase_order_line_tree_delay_custom" model="ir.ui.view">
-            <field name="name">OV - Delay (custom decoration)</field>
-            <field name="model">purchase.order.line</field>
-            <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
-            <field name="priority">16010</field>
-            <field name="arch" type="xml">
+    <record id="view_purchase_order_line_tree_delay_custom" model="ir.ui.view">
+      <field name="name">OV - Delay (custom decoration)</field>
+      <field name="model">purchase.order.line</field>
+      <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+      <field name="priority">16010</field>
+      <field name="arch" type="xml">
 
-                <xpath expr="//tree" position="attributes">
-                    <attribute name="class">decorated-po-lines</attribute>
-                    <attribute name="decoration-muted">
-                        sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')
-                    </attribute>
-                </xpath>
+        <!-- Clase propia para acotar CSS -->
+        <xpath expr="//tree" position="attributes">
+          <attribute name="class">decorated-po-lines</attribute>
+          <attribute name="decoration-muted">sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')</attribute>
+          <attribute name="decoration-warning">sid_po_line_delay == '1_week_del'</attribute>
+          <attribute name="decoration-danger">sid_po_line_delay in ('2_week_del','4_week_del','more_del')</attribute>
+        </xpath>
 
-                <!-- Aseguramos que el campo esté presente -->
-                <xpath expr="//field[@name='order_id']" position="after">
-                    <field name="sid_po_line_delay" optional="show"/>
-                </xpath>
+        <!-- Aseguramos que el campo esté presente -->
+        <xpath expr="//field[@name='order_id']" position="after">
+          <field name="sid_po_line_delay" optional="show"/>
+        </xpath>
 
-                <!-- Negrita en el campo -->
-                <xpath expr="//field[@name='sid_po_line_delay']" position="attributes">
-                    <attribute name="decoration-bf">sid_po_line_delay in
-                        ('1_week_del','2_week_del','4_week_del','more_del')
-                    </attribute>
-                </xpath>
+        <!-- Negrita en el campo -->
+        <xpath expr="//field[@name='sid_po_line_delay']" position="attributes">
+          <attribute name="decoration-bf">sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')</attribute>
+        </xpath>
 
-                <!-- Colores de la fila -->
-                <xpath expr="//tree" position="attributes">
-                    <attribute name="decoration-warning">sid_po_line_delay == '1_week_del'</attribute>
-                    <attribute name="decoration-danger">sid_po_line_delay in ('2_week_del','4_week_del','more_del')
-                    </attribute>
-                </xpath>
+      </field>
+    </record>
 
-            </field>
-        </record>
-
-    </data>
+  </data>
 </odoo>
