@@ -3,8 +3,9 @@
   <data>
 
     <!--
-      Decoraciones: solo sobre campo custom sid_po_line_delay.
-      No tocamos decoration-* a nivel de tree ni atributos de campos estándar.
+      Decoraciones: colores de fila en función de sid_po_line_delay.
+      - warning: 1 semana
+      - danger: >=2 semanas
     -->
     <record id="view_purchase_order_line_tree_delay_custom" model="ir.ui.view">
       <field name="name">OV - Delay (custom decoration)</field>
@@ -13,12 +14,20 @@
       <field name="priority">16010</field>
       <field name="arch" type="xml">
 
+        <!-- Aseguramos que el campo esté presente -->
         <xpath expr="//field[@name='order_id']" position="after">
           <field name="sid_po_line_delay" optional="show"/>
         </xpath>
 
+        <!-- Negrita en el campo -->
         <xpath expr="//field[@name='sid_po_line_delay']" position="attributes">
           <attribute name="decoration-bf">sid_po_line_delay in ('1_week_del','2_week_del','4_week_del','more_del')</attribute>
+        </xpath>
+
+        <!-- Colores de la fila -->
+        <xpath expr="//tree" position="attributes">
+          <attribute name="decoration-warning">sid_po_line_delay == '1_week_del'</attribute>
+          <attribute name="decoration-danger">sid_po_line_delay in ('2_week_del','4_week_del','more_del')</attribute>
         </xpath>
 
       </field>

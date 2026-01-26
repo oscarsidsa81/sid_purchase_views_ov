@@ -22,6 +22,11 @@
           <field name="sid_po_line_delay" optional="show"/>
         </xpath>
 
+        <!-- Wrap 2 líneas (mínimo) en descripción -->
+        <xpath expr="//field[@name='name']" position="attributes">
+          <attribute name="class">sid_wrap_2lines</attribute>
+        </xpath>
+
         <!-- Fecha venta (propia) junto a contractual -->
         <xpath expr="//field[@name='contract_date']" position="after">
           <field name="sid_sale_date" optional="show" widget="date"/>

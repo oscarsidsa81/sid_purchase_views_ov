@@ -1,15 +1,8 @@
-/*
- * Wrap de texto para celdas de list view.
- * - Mínimo ~2 líneas de alto (legibilidad)
- * - Adaptativo: si el texto es más largo, la fila puede crecer.
- *
- * Se activa poniendo class="sid_wrap_2lines" en el <field/>.
- */
-
+/* Wrap de texto en list views: mínimo 2 líneas, altura adaptativa */
 .o_list_view .o_data_cell.sid_wrap_2lines,
 .o_list_view .o_data_cell .sid_wrap_2lines {
     white-space: normal !important;
     line-height: 1.2em;
-    min-height: 2.4em;      /* ~2 líneas */
+    min-height: 2.4em; /* ~2 líneas */
     height: auto !important;
 }
