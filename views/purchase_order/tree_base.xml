@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <record id="view_purchase_order_tree_base" model="ir.ui.view">
-      <field name="name">OV - Base</field>
-      <field name="model">purchase.order</field>
-      <field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
-      <field name="priority">16</field>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='origin']" position="after">
-          <field name="amount_untaxed_pending" optional="show"/>
-          <field name="amount_untaxed_total" optional="show"/>
-        </xpath>
-      </field>
-    </record>
-  </data>
+    <data>
+        <record id="view_purchase_order_tree_base" model="ir.ui.view">
+            <field name="name">OV - Base</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_view_tree"/>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="amount_untaxed_pending" optional="show"/>
+                    <field name="amount_untaxed_total" optional="show"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_untaxed']" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>

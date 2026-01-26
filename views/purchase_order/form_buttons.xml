@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <record id="view_purchase_order_form_docs_domain" model="ir.ui.view">
-      <field name="name">OV - purchase.order.form (domain + documentos)</field>
-      <field name="model">purchase.order</field>
-      <field name="inherit_id" ref="purchase.purchase_order_form"/>
-      <field name="priority">16</field>
-      <field name="arch" type="xml">
-        <xpath expr="//button[@name='action_view_invoice']" position="after">
-          <button class="oe_stat_button" icon="fa-file-o" type="action" name="1024" string="Documentos de compra"/>
-        </xpath>
-      </field>
-    </record>
-  </data>
+    <data>
+        <record id="view_purchase_order_form_docs_domain" model="ir.ui.view">
+            <field name="name">OV - purchase.order.form (domain + documentos)</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_sale_orders']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('id', '=', False)]}</attribute>
+                    <attribute name="groups">sales_team.group_sale_salesman,purchase.group_purchase_manager</attribute>
+                </xpath>
+                <xpath expr="//div[@name='button_box']/button[@name='action_view_picking']" position="after">
+                    <button class="oe_stat_button" icon="fa-sitemap" type="action" name="1265">
+                        <div class="o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="sid_order_id_purchase_order_line_count" widget="statinfo"/>
+                            </span>
+                            <span class="o_stat_text">Líneas</span>
+                        </div>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>
