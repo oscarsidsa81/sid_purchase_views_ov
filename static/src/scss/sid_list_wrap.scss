@@ -6,3 +6,20 @@
     min-height: 2.4em; /* ~2 líneas */
     height: auto !important;
 }
+
+/* Filas con retraso: fondo gris oscuro SOLO en el tree decorated-po-lines */
+.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.text-muted > td {
+    background-color: #3a3a3a !important;
+    color: #f2f2f2 !important;
+}
+
+/* Hover (para que no lo pise el hover estándar) */
+.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.text-muted:hover > td {
+    background-color: #444 !important;
+}
+
+/* Links legibles */
+.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.text-muted a {
+    color: #fff !important;
+}
+
