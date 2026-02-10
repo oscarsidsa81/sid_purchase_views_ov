@@ -19,7 +19,6 @@
           <field name="supplier_country" optional="show"/>
           <field name="pending_line" optional="show"/>
           <field name="sid_invoice" optional="show"/>
-          <field name="sid_po_line_delay" optional="show"/>
         </xpath>
 
         <!-- Wrap 2 líneas (mínimo) en descripción -->
