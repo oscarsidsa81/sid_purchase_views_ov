@@ -1,29 +1,55 @@
-/* Wrap de texto en list views: mínimo 2 líneas, altura adaptativa */
+/* ============================================================
+   SIDSA — Purchase Order Lines (purchase.order.line) — FINAL CSS
+   Objetivo:
+   - Wrap de texto a 2+ líneas donde se aplique la clase sid_wrap_2lines
+   - Background por decoraciones (danger/warning/info/primary/success)
+     SOLO en el tree que tenga class="decorated-po-lines"
+   - Hover suave
+   ============================================================ */
+
+/* Wrap de texto en celdas: mínimo 2 líneas, altura adaptativa */
 .o_list_view .o_data_cell.sid_wrap_2lines,
 .o_list_view .o_data_cell .sid_wrap_2lines {
-    white-space: normal !important;
-    line-height: 1.2em;
-    min-height: 2.4em; /* ~2 líneas */
-    height: auto !important;
+  white-space: normal !important;
+  line-height: 1.2em;
+  min-height: 2.4em; /* ~2 líneas */
+  height: auto !important;
 }
 
-/* Filas con retraso: fondo gris oscuro SOLO en el tree decorated-po-lines
-   (cubrimos: class en div o en table) */
-.o_list_view.decorated-po-lines tr.o_data_row.text-muted > td,
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.text-muted > td,
-.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.text-muted > td {
-  background-color: #3a3a3a !important;
-  color: #f2f2f2 !important;
+/* Backgrounds SOLO en la lista con class="decorated-po-lines"
+   (Odoo 15 suele usar tr.o_data_row + clase o_list_row_* por decoración) */
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_danger > td {
+  background-color: rgba(220, 53, 69, 0.12);
 }
 
-.o_list_view.decorated-po-lines tr.o_data_row.text-muted:hover > td,
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.text-muted:hover > td,
-.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.text-muted:hover > td {
-  background-color: #444 !important;
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_warning > td {
+  background-color: rgba(255, 193, 7, 0.14);
 }
 
-.o_list_view.decorated-po-lines tr.o_data_row.text-muted a,
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.text-muted a,
-.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.text-muted a {
-  color: #fff !important;
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_info > td {
+  background-color: rgba(13, 202, 240, 0.14);
+}
+
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_primary > td {
+  background-color: rgba(13, 110, 253, 0.12);
+}
+
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_success > td {
+  background-color: rgba(25, 135, 84, 0.12);
+}
+
+/* Hover suave (opcional) */
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_danger:hover > td,
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_warning:hover > td,
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_info:hover > td,
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_primary:hover > td,
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_success:hover > td {
+  filter: brightness(0.98);
+}
+
+/* Negrita real en filas con retraso (ajusta si quieres incluir/excluir estados) */
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_danger td,
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_warning td,
+.o_list_view .o_list_table.decorated-po-lines tr.o_data_row.o_list_row_info td {
+  font-weight: 600;
 }
