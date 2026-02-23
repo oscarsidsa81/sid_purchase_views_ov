@@ -25,13 +25,6 @@
   background-color: rgba(108, 117, 125, 0.10) !important;
 }
 
-/* 2) Hover (opcional) */
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-warning:hover > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-danger:hover > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-muted:hover > td {
-  filter: brightness(0.98);
-}
-
 /* 3) Selección: Odoo puede aplicar su propio fondo al seleccionar */
 .o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-warning > td {
   background-color: rgba(255, 193, 7, 0.20) !important;
