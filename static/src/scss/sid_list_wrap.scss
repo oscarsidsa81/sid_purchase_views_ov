@@ -1,26 +1,37 @@
 /* ============================================================
-   PO Line list — background by decoration (Odoo 15)
+   PO Line list — background by decoration (Odoo 15 real DOM)
    ============================================================ */
 
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-warning > td {
-  background-color: rgba(255, 193, 7, 0.14) !important;
+/* WARNING */
+.o_list_view.decorated-po-lines
+.o_list_table
+tr.o_data_row.text-warning > td {
+    background-color: rgba(255, 193, 7, 0.14) !important;
 }
 
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-danger > td {
-  background-color: rgba(220, 53, 69, 0.12) !important;
+/* DANGER (si en algún caso usas decoration-danger y genera text-danger) */
+.o_list_view.decorated-po-lines
+.o_list_table
+tr.o_data_row.text-danger > td {
+    background-color: rgba(220, 53, 69, 0.12) !important;
 }
 
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-muted > td {
-  background-color: rgba(108, 117, 125, 0.10) !important;
+/* MUTED */
+.o_list_view.decorated-po-lines
+.o_list_table
+tr.o_data_row.text-muted > td {
+    background-color: rgba(108, 117, 125, 0.10) !important;
 }
 
-/* selected row (Odoo aplica fondo propio) */
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-warning > td {
-  background-color: rgba(255, 193, 7, 0.20) !important;
+/* Fila seleccionada */
+.o_list_view.decorated-po-lines
+.o_list_table
+tr.o_data_row.o_selected_row.text-warning > td {
+    background-color: rgba(255, 193, 7, 0.22) !important;
 }
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-danger > td {
-  background-color: rgba(220, 53, 69, 0.18) !important;
-}
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-muted > td {
-  background-color: rgba(108, 117, 125, 0.16) !important;
+
+.o_list_view.decorated-po-lines
+.o_list_table
+tr.o_data_row.o_selected_row.text-muted > td {
+    background-color: rgba(108, 117, 125, 0.18) !important;
 }
