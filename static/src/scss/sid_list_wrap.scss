@@ -2,17 +2,6 @@
    PO Line list — background by decoration (Odoo 15)
    ============================================================ */
 
-/* WRAP 2 líneas (si lo usas en algunas celdas) */
-.o_list_view .o_data_cell.sid_wrap_2lines,
-.o_list_view .o_data_cell .sid_wrap_2lines {
-  white-space: normal !important;
-  line-height: 1.2em;
-  min-height: 2.4em;
-  height: auto !important;
-}
-
-/* 1) Background por decorations (clases que Odoo añade al TR) */
-/* Nota: pintamos TD para que se vea el fondo de toda la fila */
 .o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-warning > td {
   background-color: rgba(255, 193, 7, 0.14) !important;
 }
@@ -25,7 +14,7 @@
   background-color: rgba(108, 117, 125, 0.10) !important;
 }
 
-/* 3) Selección: Odoo puede aplicar su propio fondo al seleccionar */
+/* selected row (Odoo aplica fondo propio) */
 .o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-warning > td {
   background-color: rgba(255, 193, 7, 0.20) !important;
 }
