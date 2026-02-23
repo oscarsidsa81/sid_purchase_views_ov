@@ -1,9 +1,8 @@
 /* ============================================================
-   Purchase Order Line list — background by decoration
-   Compatible con clase en wrapper o en table
+   PO Line list — background by decoration (Odoo 15)
    ============================================================ */
 
-/* WRAP 2 líneas (si lo sigues usando) */
+/* WRAP 2 líneas (si lo usas en algunas celdas) */
 .o_list_view .o_data_cell.sid_wrap_2lines,
 .o_list_view .o_data_cell .sid_wrap_2lines {
   white-space: normal !important;
@@ -12,54 +11,34 @@
   height: auto !important;
 }
 
-/* 1) Si "decorated-po-lines" cae en un WRAPPER (div padre) */
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_danger > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_warning > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_info > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_primary > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_success > td {
-  background-clip: padding-box;
-}
-
-/* Colores */
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_danger > td {
-  background-color: rgba(220, 53, 69, 0.12) !important;
-}
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_warning > td {
+/* 1) Background por decorations (clases que Odoo añade al TR) */
+/* Nota: pintamos TD para que se vea el fondo de toda la fila */
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-warning > td {
   background-color: rgba(255, 193, 7, 0.14) !important;
 }
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_info > td {
-  background-color: rgba(13, 202, 240, 0.14) !important;
-}
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_primary > td {
-  background-color: rgba(13, 110, 253, 0.12) !important;
-}
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_success > td {
-  background-color: rgba(25, 135, 84, 0.12) !important;
-}
 
-/* 2) Si "decorated-po-lines" cae directamente en la TABLE */
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.o_list_row_danger > td {
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-danger > td {
   background-color: rgba(220, 53, 69, 0.12) !important;
 }
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.o_list_row_warning > td {
-  background-color: rgba(255, 193, 7, 0.14) !important;
-}
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.o_list_row_info > td {
-  background-color: rgba(13, 202, 240, 0.14) !important;
-}
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.o_list_row_primary > td {
-  background-color: rgba(13, 110, 253, 0.12) !important;
-}
-.o_list_view table.o_list_table.decorated-po-lines tr.o_data_row.o_list_row_success > td {
-  background-color: rgba(25, 135, 84, 0.12) !important;
+
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-muted > td {
+  background-color: rgba(108, 117, 125, 0.10) !important;
 }
 
-/* Hover (opcional) */
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_danger:hover > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_warning:hover > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_info:hover > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_primary:hover > td,
-.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_list_row_success:hover > td {
+/* 2) Hover (opcional) */
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-warning:hover > td,
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-danger:hover > td,
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.decoration-muted:hover > td {
   filter: brightness(0.98);
+}
+
+/* 3) Selección: Odoo puede aplicar su propio fondo al seleccionar */
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-warning > td {
+  background-color: rgba(255, 193, 7, 0.20) !important;
+}
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-danger > td {
+  background-color: rgba(220, 53, 69, 0.18) !important;
+}
+.o_list_view .decorated-po-lines .o_list_table tr.o_data_row.o_selected_row.decoration-muted > td {
+  background-color: rgba(108, 117, 125, 0.16) !important;
 }

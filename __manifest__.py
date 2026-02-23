@@ -13,6 +13,7 @@
     ],
     "data": [
         "data/purchase_order_line_actions.xml",
+        "views/purchase_order_line/assets.xml",
         "views/purchase_order/tree_base.xml",
         "views/purchase_order/form_buttons.xml",
         "views/purchase_order/form_varios.xml",
