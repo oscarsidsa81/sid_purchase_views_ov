@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "SIDSA - Purchase Views OV",
+    "name": "sid_purchase_views_ov",
     "version": "15.0.1.0.1",
     "category": "Purchases",
     "summary": "Overrides de vistas de Purchase agrupados por funcionalidad.",
-    "author": "SIDSA / Custom",
+    "author": "oscarsidsa81",
     "license": "LGPL-3",
     "depends": [
         "purchase",
