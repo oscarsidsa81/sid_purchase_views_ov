@@ -17,7 +17,6 @@
         "views/purchase_order/tree_base.xml",
         "views/purchase_order/form_buttons.xml",
         "views/purchase_order/form_varios.xml",
-        "views/purchase_order_line/tree_buttons.xml",
         "views/purchase_order_line/tree_columns.xml",
         "views/purchase_order_line/tree_decorations.xml",
         "views/purchase_order_line/form_contract_date.xml",
