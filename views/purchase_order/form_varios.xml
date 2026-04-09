@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
-        <!-- purchase.order.form: SOLO campos propios (sid_purchase_extra_fields) -->
+       <!-- purchase.order.form: SOLO campos propios (sid_purchase_extra_fields) -->
         <record id="view_purchase_order_form_custom_fields" model="ir.ui.view">
             <field name="name">OV - purchase.order.form (custom fields)</field>
             <field name="model">purchase.order</field>
@@ -10,10 +9,6 @@
             <field name="priority">1600</field>
             <field name="arch" type="xml">
 
-                <!-- Campo propio -->
-                <xpath expr="//field[@name='picking_type_id']" position="after">
-                    <field name="sid_regularizado"/>
-                </xpath>
                 <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='products']/field[@name='order_line']/form[1]/group[1]/group[2]/field[@name='account_analytic_id']"
                        position="attributes">
                     <attribute name="options">{"no_create":true}</attribute>

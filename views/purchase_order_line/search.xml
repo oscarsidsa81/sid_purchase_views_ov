@@ -20,7 +20,6 @@
           <searchpanel>
             <field name="sid_invoice" enable_counters="1" select="multi"/>
             <field name="pending_line" string="Pendiente" enable_counters="1" select="multi"/>
-            <field name="sid_po_line_delay" enable_counters="1" select="multi" default_order="id asc"/>
             <field name="supplier_country" string="País Origen" enable_counters="1" select="multi"/>
           </searchpanel>
         </search>

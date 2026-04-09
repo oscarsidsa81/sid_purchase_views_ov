@@ -8,7 +8,7 @@
       <field name="view_mode">tree,form</field>
       <field name="domain">[('order_id', '=', active_id)]</field>
       <field name="context">{'search_default_order_id': active_id, 'default_order_id': active_id}</field>
-      <field name="limit">80</field>
+      <field name="limit">150</field>
       <field name="target">current</field>
     </record>
 

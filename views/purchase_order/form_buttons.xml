@@ -16,7 +16,7 @@
                             icon="fa-sitemap"
                             type="action"
                             name="%(sid_purchase_views_ov.action_purchase_order_lines_from_po)d">
-                        <field name="sid_order_id_purchase_order_line_count" widget="statinfo" string="Líneas"/>
+                        <field name="sid_order_id_purchase_order_line_count" widget="statinfo" string="Líneas de compra"/>
                     </button>
                 </xpath>
             </field>
