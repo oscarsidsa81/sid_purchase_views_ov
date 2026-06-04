@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!--
+      purchase.order.line.tree: decoraciones de fila para la vista de líneas.
+      La clase activa el SCSS del módulo y las decoration-* generan las clases
+      text-warning/text-danger/text-muted en el DOM de Odoo 15.
+    -->
+    <record id="view_purchase_order_line_tree_decorations_sid" model="ir.ui.view">
+      <field name="name">OV - purchase.order.line.tree (decorations)</field>
+      <field name="model">purchase.order.line</field>
+      <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+      <field name="priority">16010</field>
+      <field name="arch" type="xml">
+
+        <xpath expr="//tree" position="attributes">
+          <attribute name="class" add="decorated-po-lines" separator=" "/>
+          <attribute name="decoration-warning">pending_line == 'true'</attribute>
+          <attribute name="decoration-danger">sid_invoice == 'facturar'</attribute>
+          <attribute name="decoration-muted">state == 'cancel'</attribute>
+        </xpath>
+
+      </field>
+    </record>
+
+  </data>
+</odoo>
