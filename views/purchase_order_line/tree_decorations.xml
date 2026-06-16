@@ -21,6 +21,11 @@
           <attribute name="decoration-muted">state == 'cancel'</attribute>
         </xpath>
 
+        <!-- Campo técnico requerido por decoration-muted. -->
+        <xpath expr="//field[@name='order_id']" position="after">
+          <field name="state" invisible="1"/>
+        </xpath>
+
       </field>
     </record>
 
