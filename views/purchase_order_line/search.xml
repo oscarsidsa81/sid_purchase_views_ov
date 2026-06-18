@@ -2,11 +2,11 @@
 <odoo>
   <data>
 
-    <!-- purchase.order.line.search: SOLO campos sid_purchase_extra_fields -->
+    <!-- purchase.order.line.search: agrega campos OV al searchpanel de sid_purchase_delay_sync -->
     <record id="view_purchase_order_line_search_sid" model="ir.ui.view">
-      <field name="name">OV - purchase.order.line.search (sid fields)</field>
+      <field name="name">purchase.order.line.search.sid_purchase_views_ov</field>
       <field name="model">purchase.order.line</field>
-      <field name="inherit_id" ref="purchase.purchase_order_line_search"/>
+      <field name="inherit_id" ref="sid_purchase_delay_sync.view_purchase_order_line_search_sid_po_line_delay"/>
       <field name="priority">16000</field>
       <field name="arch" type="xml">
 
@@ -16,13 +16,11 @@
           <filter name="sid_invoice_pendiente" string="Pendiente facturación" domain="[('sid_invoice','=','pendiente')]"/>
         </xpath>
 
-        <search>
-          <searchpanel>
-            <field name="sid_invoice" enable_counters="1" select="multi"/>
-            <field name="pending_line" string="Pendiente" enable_counters="1" select="multi"/>
-            <field name="supplier_country" string="País Origen" enable_counters="1" select="multi"/>
-          </searchpanel>
-        </search>
+        <xpath expr="//searchpanel" position="inside">
+          <field name="sid_invoice" enable_counters="1" select="multi"/>
+          <field name="pending_line" string="Pendiente" enable_counters="1" select="multi"/>
+          <field name="supplier_country" string="País Origen" enable_counters="1" select="multi"/>
+        </xpath>
 
       </field>
     </record>
