@@ -10,6 +10,7 @@
         "purchase",
         "web",
         "sale_management",
+        "sid_purchase_delay_sync",
     ],
     "data": [
         "data/purchase_order_line_actions.xml",
